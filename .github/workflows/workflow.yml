@@ -1,5 +1,7 @@
-name: Run Tests Workflow
+name: App CI/CD
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
