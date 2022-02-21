@@ -1,0 +1,4 @@
+.key:last-child,
+.key:nth-child(17) {
+  grid-column: span 2;
+}
