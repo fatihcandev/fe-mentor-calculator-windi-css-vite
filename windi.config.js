@@ -2,7 +2,6 @@ import { defineConfig } from 'vite-plugin-windicss'
 
 export default defineConfig({
   attributify: true,
-  preflight: true,
   theme: {
     extend: {
       screens: {
@@ -14,16 +13,16 @@ export default defineConfig({
       },
       colors: {
         white: '#FFFFFF',
-        bgPrimary: 'hsl(222, 26%, 31%)',
-        bgSecondary: 'hsl(223, 31%, 20%)',
-        bgTertiary: 'hsl(224, 36%, 15%)',
-        keyBgPrimary: 'hsl(30, 25%, 89%)',
-        keyShadowPrimary: 'hsl(28, 16%, 65%)',
-        keyBgSecondary: 'hsl(225, 21%, 49%)',
-        keyShadowSecondary: 'hsl(224, 28%, 35%)',
-        keyBgTertiary: 'hsl(6, 63%, 50%)',
-        keyShadowTertiary: 'hsl(6, 70%, 34%)',
-        textPrimary: 'hsl(221, 14%, 31%)',
+        bgPrimary: '#2B4173',
+        bgSecondary: '#232c43',
+        bgTertiary: '#182034',
+        keyBgPrimary: '#eae3dc',
+        keyShadowPrimary: '#b4a597',
+        keyBgSecondary: '#637097',
+        keyShadowSecondary: '#404e72',
+        keyBgTertiary: '#d03f2f',
+        keyShadowTertiary: '#93261a',
+        textPrimary: '#444b5a',
       },
       fontFamily: {
         sans: ['Spartan', 'sans-serif'],
