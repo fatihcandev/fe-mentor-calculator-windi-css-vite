@@ -149,13 +149,13 @@ describe('calculator', () => {
     clickOnKey(equalsKey)
     assertScreenContent('1250')
   })
-  it('should reset the result on number input', () => {
+  it('should reset the screen and render the new numbers on number input', () => {
     assertSum()
     inputNumber(5)
     inputNumber(0)
     assertScreenContent('50')
   })
-  it('should reset the state', () => {
+  it('should reset the screen', () => {
     assertSum()
     clickOnKey(resetKey)
     assertScreenContent('')
