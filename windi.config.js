@@ -17,12 +17,14 @@ export default defineConfig({
         bgSecondary: '#232c43',
         bgTertiary: '#182034',
         keyBgPrimary: '#eae3dc',
-        keyShadowPrimary: '#b4a597',
         keyBgSecondary: '#637097',
         keyShadowSecondary: '#404e72',
         keyBgTertiary: '#d03f2f',
         keyShadowTertiary: '#93261a',
         textPrimary: '#444b5a',
+      },
+      boxShadow: {
+        key: '0 4px 0 #b4a597',
       },
       fontFamily: {
         sans: ['Spartan', 'sans-serif'],
