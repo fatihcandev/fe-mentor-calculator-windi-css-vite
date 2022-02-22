@@ -20,7 +20,8 @@ const Keypad = ({ onKeyDown }) => {
             bg="keyBgPrimary"
             rounded="[10px]"
             text="xl"
-            shadow="key"
+            shadow="key active:none"
+            transform="~ active:translate-y-1"
             md="text-3xl"
             onClick={() => onKeyDown(key.content)}
             className="key"
