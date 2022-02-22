@@ -24,25 +24,40 @@ function App() {
     }))
   }
 
+  // didnt use handleUpdateState func here because i need to access to the
+  // state immediately after the reset (if reset is fired)
   function handleNumberInput(value) {
-    // didnt use handleUpdateState func here because i need to access to the
-    // state immediately after the reset (if reset is fired)
     setState((prevState) => {
       const key = prevState.operator ? 'secondNumber' : 'firstNumber'
-      return {
-        ...prevState,
-        [key]: String(value),
+      const currentNumber = prevState[key]
+      // value comes as a number
+      const stringifedValue = String(value)
+      // limit the amount of digits that can be entered for each number to 15
+      if (currentNumber.length < 15) {
+        return {
+          ...prevState,
+          [key]: currentNumber.concat(stringifedValue),
+        }
       }
+
+      return prevState
     })
   }
 
   function handleDotInput() {
     const { firstNumber, secondNumber } = state
-    if (firstNumber && !secondNumber && !firstNumber.includes('.')) {
+    const firstNumberCondition =
+      firstNumber &&
+      firstNumber.length < 15 &&
+      !firstNumber.includes('.') &&
+      !secondNumber
+    const secondNumberCondition =
+      secondNumber && secondNumber.length < 15 && !secondNumber.includes('.')
+    if (firstNumberCondition) {
       return handleUpdateState('firstNumber', firstNumber.concat('.'))
     }
 
-    if (secondNumber && !secondNumber.includes('.')) {
+    if (secondNumberCondition) {
       handleUpdateState('secondNumber', secondNumber.concat('.'))
     }
   }
@@ -111,12 +126,7 @@ function App() {
     const isEquals = value === '='
     const isDel = value === 'DEL'
 
-    if (isNumber) {
-      const concattenatedInput = state.operator
-        ? state.secondNumber.concat(value)
-        : state.firstNumber.concat(value)
-      return handleNumberInput(concattenatedInput)
-    }
+    if (isNumber) return handleNumberInput(value)
     if (isDot) return handleDotInput()
     if (isOperator) return handleOperatorInput(value)
     if (isEquals) return handleCalculation()

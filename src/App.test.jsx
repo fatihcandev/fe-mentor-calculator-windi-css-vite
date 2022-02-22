@@ -61,6 +61,13 @@ describe('calculator', () => {
     inputNumber(5)
     assertScreenContent('25')
   })
+  it('should not render more than 15 digits for a number', () => {
+    // click on 2 key 16 times
+    Array(16)
+      .fill('')
+      .forEach(() => inputNumber(2))
+    expect(screenComponent.textContent).toHaveLength(15)
+  })
   it('should render dot in the number', () => {
     inputNumber(2)
     inputNumber(5)
