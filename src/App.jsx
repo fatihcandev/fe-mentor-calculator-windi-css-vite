@@ -43,7 +43,7 @@ function App() {
     })
   }
 
-  function handleDotInput() {
+  function handleDecimalPointInput() {
     const { firstNumber, secondNumber } = state
     const firstNumberCondition =
       firstNumber &&
@@ -119,13 +119,13 @@ function App() {
       if (isReset) return handleReset()
     }
 
-    const isDot = value === '.'
+    const isDecimalPoint = value === '.'
     const isOperator = ['+', '-', '/', 'x'].includes(value)
     const isEquals = value === '='
     const isDel = value === 'DEL'
 
     if (isNumber) return handleNumberInput(value)
-    if (isDot) return handleDotInput()
+    if (isDecimalPoint) return handleDecimalPointInput()
     if (isOperator) return handleOperatorInput(value)
     if (isEquals) return handleCalculation()
     if (isDel) return handleDelete()

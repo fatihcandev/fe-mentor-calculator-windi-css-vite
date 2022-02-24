@@ -40,7 +40,7 @@ export default [
   },
   {
     content: '.',
-    testId: 'key-dot',
+    testId: 'key-decimalPoint',
   },
   {
     content: '0',

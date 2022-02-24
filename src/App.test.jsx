@@ -8,7 +8,7 @@ let screenComponent,
   subKey,
   divKey,
   mulKey,
-  dotKey,
+  decimalPointKey,
   resetKey,
   delKey,
   equalsKey
@@ -25,7 +25,7 @@ beforeEach(() => {
   subKey = getByTestId('key-sub')
   divKey = getByTestId('key-div')
   mulKey = getByTestId('key-mul')
-  dotKey = getByTestId('key-dot')
+  decimalPointKey = getByTestId('key-decimalPoint')
   resetKey = getByTestId('key-reset')
   delKey = getByTestId('key-del')
   equalsKey = getByTestId('key-equ')
@@ -68,18 +68,18 @@ describe('calculator', () => {
       .forEach(() => inputNumber(2))
     expect(screenComponent.textContent).toHaveLength(15)
   })
-  it('should render dot in the number', () => {
+  it('should render decimalPoint in the number', () => {
     inputNumber(2)
     inputNumber(5)
-    click(dotKey)
+    click(decimalPointKey)
     inputNumber(5)
     assertScreenContent('25.5')
   })
-  it('should render only one dot in the number', () => {
+  it('should render only one decimalPoint in the number', () => {
     inputNumber(2)
     inputNumber(5)
-    click(dotKey)
-    click(dotKey)
+    click(decimalPointKey)
+    click(decimalPointKey)
     inputNumber(5)
     assertScreenContent('25.5')
   })
