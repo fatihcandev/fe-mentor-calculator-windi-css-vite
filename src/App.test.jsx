@@ -170,6 +170,7 @@ describe('calculator', () => {
     inputNumber(0)
     click(sumKey)
     inputNumber(2)
+    assertScreenContent('50+2')
     click(resetKey)
     assertScreenContent('')
   })
