@@ -35,8 +35,14 @@ function click(element) {
   userEvent.click(element)
 }
 
-function inputNumber(value) {
-  click(numberKeys[value])
+function inputNumber(number) {
+  click(numberKeys[number])
+}
+
+function inputNumberRepeatedly({ number, amount }) {
+  Array(amount)
+    .fill('')
+    .forEach(() => inputNumber(number))
 }
 
 function assertScreenContent(text) {
@@ -62,11 +68,16 @@ describe('calculator', () => {
     assertScreenContent('25')
   })
   it('should not render more than 15 digits for a number', () => {
-    // click on 2 key 16 times
-    Array(16)
-      .fill('')
-      .forEach(() => inputNumber(2))
+    inputNumberRepeatedly({ number: 2, amount: 16 })
     expect(screenComponent.textContent).toHaveLength(15)
+  })
+  it('should not render more than 10 digits after a decimal point', () => {
+    inputNumber(2)
+    inputNumber(5)
+    click(decimalPointKey)
+    inputNumberRepeatedly({ number: 2, amount: 11 })
+    const digitsAfterDot = screenComponent.textContent.split('.')[1]
+    expect(digitsAfterDot).toHaveLength(10)
   })
   it('should render decimalPoint in the number', () => {
     inputNumber(2)

@@ -31,12 +31,21 @@ function App() {
       // if there is an operator selected, the entered number is gonna be the second number
       const key = prevState.operator ? 'secondNumber' : 'firstNumber'
       const currentNumber = prevState[key]
+      const updatedState = {
+        ...prevState,
+        [key]: currentNumber.concat(value),
+      }
+      if (currentNumber.includes('.')) {
+        const digitsAfterDot = currentNumber.split('.')[1]
+        // limit the amount of digits that can be entered after a decimal point to 10
+        if (digitsAfterDot.length < 10) {
+          return updatedState
+        }
+        return prevState
+      }
       // limit the amount of digits that can be entered for each number to 15
       if (currentNumber.length < 15) {
-        return {
-          ...prevState,
-          [key]: currentNumber.concat(value),
-        }
+        return updatedState
       }
 
       return prevState
