@@ -28,15 +28,14 @@ function App() {
   // state immediately after the reset (if reset is fired)
   function handleNumberInput(value) {
     setState((prevState) => {
+      // if there is an operator selected, the entered number is gonna be the second number
       const key = prevState.operator ? 'secondNumber' : 'firstNumber'
       const currentNumber = prevState[key]
-      // value comes as a number
-      const stringifedValue = String(value)
       // limit the amount of digits that can be entered for each number to 15
       if (currentNumber.length < 15) {
         return {
           ...prevState,
-          [key]: currentNumber.concat(stringifedValue),
+          [key]: currentNumber.concat(value),
         }
       }
 
@@ -54,7 +53,7 @@ function App() {
     const secondNumberCondition =
       secondNumber && secondNumber.length < 15 && !secondNumber.includes('.')
     if (firstNumberCondition) {
-      return handleUpdateState('firstNumber', firstNumber.concat('.'))
+      handleUpdateState('firstNumber', firstNumber.concat('.'))
     }
 
     if (secondNumberCondition) {
@@ -118,7 +117,6 @@ function App() {
         return handleNumberInput(value)
       }
       if (isReset) return handleReset()
-      return
     }
 
     const isDot = value === '.'
